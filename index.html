@@ -305,7 +305,7 @@ function guess(L){
  if(!n){msg("Não tem a letra "+L+".");return pass()}
  g.rev[L]=true;g.rd[g.cur]+=g.val*n;
  var nw=g.words.filter(function(w){return !w.cm&&complete(w)});nw.forEach(function(w){w.cm=true});
- if(nw.length){var p=g.rd[g.cur];bank(g.cur);if(allDone()){ui();return endRound(g.names[g.cur]+" completou a rodada! +"+p+" pontos.")}msg("Palavra completa! "+g.names[g.cur]+" guardou "+p+" pontos. Continue!")}
+ if(nw.length){if(allDone()){var p=g.rd[g.cur];bank(g.cur);ui();return endRound(g.names[g.cur]+" completou a rodada! +"+p+" pontos.")}msg("Palavra completa! Os pontos só valem quando todas as palavras forem resolvidas. Continue!")}
  else msg("Tem "+n+" letra "+L+"! +"+g.val*n+"."+(forced()?" Restam 3 letras ou menos: resolva!":" Gire de novo ou resolva."));
  g.stage="spin";ui();tick();
 }
